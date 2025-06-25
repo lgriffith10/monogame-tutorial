@@ -20,7 +20,7 @@ public class Sprite
     public Vector2 Scale { get; set; } = Vector2.One;
     public Vector2 Origin { get; set; } = Vector2.Zero;
     public SpriteEffects Effects { get; set; } = SpriteEffects.None;
-    public float LayerDepth { get; set; } = 0.0f;
+    public float LayerDepth { get; set; } = 1.0f;
 
     public float Width => Region.Width * Scale.X;
     public float Height => Region.Height * Scale.Y;

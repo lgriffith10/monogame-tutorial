@@ -12,7 +12,7 @@ public class GamePadInfo
     {
         PlayerIndex = playerIndex;
         PreviousState = new GamePadState();
-        CurrentState = GamePad.GetState(playerIndex: playerIndex);
+        CurrentState = GamePad.GetState(playerIndex);
     }
 
     public PlayerIndex PlayerIndex { get; }
@@ -29,7 +29,7 @@ public class GamePadInfo
     public void Update(GameTime gameTime)
     {
         PreviousState = CurrentState;
-        CurrentState = GamePad.GetState(playerIndex: PlayerIndex);
+        CurrentState = GamePad.GetState(PlayerIndex);
 
         if (_vibrationTimeRemaining > TimeSpan.Zero)
         {
@@ -41,22 +41,22 @@ public class GamePadInfo
 
     public bool IsButtonDown(Buttons button)
     {
-        return CurrentState.IsButtonDown(button: button);
+        return CurrentState.IsButtonDown(button);
     }
 
     public bool IsButtonUp(Buttons button)
     {
-        return CurrentState.IsButtonUp(button: button);
+        return CurrentState.IsButtonUp(button);
     }
 
     public bool WasButtonJustPressed(Buttons button)
     {
-        return CurrentState.IsButtonDown(button: button) && PreviousState.IsButtonUp(button: button);
+        return CurrentState.IsButtonDown(button) && PreviousState.IsButtonUp(button);
     }
 
     public bool WasButtonJustReleased(Buttons button)
     {
-        return CurrentState.IsButtonUp(button: button) && PreviousState.IsButtonDown(button: button);
+        return CurrentState.IsButtonUp(button) && PreviousState.IsButtonDown(button);
     }
 
     public void SetVibration(float strength, TimeSpan duration)
